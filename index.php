@@ -1,6 +1,7 @@
 <?php
-	require 'connect.php';
-	$result = mysqli_query($con, 'select * from product');
+	include('connect.php');
+	$CONN = DBConnection();
+	$products = $CONN->query("SELECT * FROM product");
 ?>
 
 <!DOCTYPE HTML>
@@ -48,17 +49,16 @@
 				</header>
 				<div class="container">
 					<div class="row">
-						<?php while($product = mysqli_fetch_object($result)) { ?>
-							
-								<div class="4u">
-									<section class="special box">
-										<h3><?php echo $product->name;?></h3>
-										<p>$<?php echo $product->price;?></p>
-										<a href="checkout.php?id=<?php echo $product->id; ?>" class="button alt">Add to Cart</a> <!--Figure out how to refresh -->
-									</section>
-								</div>
-							
-						<?php } ?>
+						<?php
+						foreach($products as $p)
+						{
+							echo '<div class="4u"><section class="special box">';
+							echo '<h3>' . $p["name"] . '</h3>';
+							echo '<a href="checkout.php?id=<?php echo $product->id; ?>" class="button alt">Add to Cart</a></section></div>';
+						}
+						
+						
+						?>
 					</div>
 				</div>
 			</section>
