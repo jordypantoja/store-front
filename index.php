@@ -54,7 +54,7 @@
 						{
 							echo '<div class="4u"><section class="special box">';
 							echo '<h3>' . $p["name"] . '</h3>';
-							echo '<a href="checkout.php?id=<?php echo $product->id; ?>" class="button alt">Add to Cart</a></section></div>';
+							echo '<a href="checkout.php?id='.$p["id"].'" class="button alt">Add to Cart</a></section></div>';
 						}
 						
 						
